@@ -68,7 +68,7 @@ jobs:
           comment-author: 'github-actions[bot]'
           body-includes: 'Test results'
 
-      - name: update comment
+      - name: update comment Preview
         uses: peter-evans/create-or-update-comment@v4
         if: steps.fc.outputs.comment-id
         with:
@@ -78,14 +78,14 @@ jobs:
             Preview: https://s3.amazonaws.com/noam-gaash.co.il/${{ github.event.workflow_run.id }}/open-bus/${{ github.event.workflow_run.run_number }}/index.html
             Preview Storybook: https://s3.amazonaws.com/noam-gaash.co.il/${{ github.event.workflow_run.id }}/open-bus/${{ github.event.workflow_run.run_number }}/storybook/index.html
 
-      - name: update comment
+      - name: update comment Test Results
         uses: peter-evans/create-or-update-comment@v4
         if: steps.fc-tr.outputs.comment-id
         with:
           comment-id: ${{ steps.fc-tr.outputs.comment-id }}
           edit-mode: append
           body: |
-            Test results: https://s3.amazonaws.com/noam-gaash.co.il/${{ github.run_id }}/open-bus/${{ github.sha }}/test-results/index.html
+            Test Results: https://s3.amazonaws.com/noam-gaash.co.il/${{ github.run_id }}/open-bus/${{ github.sha }}/test-results/index.html
 
       - name: create comment
         uses: peter-evans/create-or-update-comment@v4
